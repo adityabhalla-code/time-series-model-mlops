@@ -1,0 +1,5 @@
+uvicorn>=0.16.0,<0.18.0
+fastapi>=0.64.0,<1.0.0
+pydantic>=1.8.1,<2.0.0
+requests>=2.23.0,<2.24.0
+time_series_model-0.0.1-py3-none-any.whl
