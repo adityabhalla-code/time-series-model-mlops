@@ -17,7 +17,9 @@ jobs:
       with:
         python-version: '3.10'
     - name : Install dependencies
-      run : pip install -r requirements.txt
+      run : |
+        pip install cython numpy
+        pip install -r requirements.txt
     - name : Train and save pipeline
       run : python time_series_model/train_pipeline.py
     - uses : actions/upload-artifact@v2
