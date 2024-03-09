@@ -32,7 +32,6 @@ def parse_custom_date(date_str):
         return date_obj  # Return the datetime object if successful
     except ValueError:
         # If parsing fails, it means the date_str is not in the expected format
-        # Proceed to adjust and parse the date_str assuming it's in "YYYYMM" format
         year = date_str[:4]
         month = int(date_str[-2:])
         corrected_date_str = f"{year}-{month:02d}"
@@ -40,9 +39,7 @@ def parse_custom_date(date_str):
             date_obj = datetime.strptime(corrected_date_str, expected_format)
             return date_obj  # Return the adjusted datetime object
         except ValueError:
-            # If still failing, return the original string or handle as appropriate
             print(f"Error parsing date: {date_str}. Format is already correct as expected.")
-            # Optionally, return None or raise an error
             return date_str
 
 
