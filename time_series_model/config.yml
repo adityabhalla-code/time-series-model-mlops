@@ -1,0 +1,39 @@
+# package Overview
+package_name: time_series_model
+
+# Data files 
+training_data_file: Time_series.csv
+test_data_file: test.csv
+
+# variables
+# variable attempting to predict
+target: y
+
+pipeline_name: time_series_model
+pipeline_save_file: time_series__model_v
+
+features:
+   - RBOB_Gasoline_t_2
+   - US_Corn_t_1
+   - US_Cocoa_t_2
+   - consumption_t_1
+   - Ind_Prod_t_1
+   - Unit_labor_t_1
+
+#features inside processing pipeline
+date_var: ds
+
+#model parameters
+growth: linear
+daily_seasonality: False
+seasonality_mode: additive
+changepoint_prior_scale: 0.1
+seasonality_prior_Scale: 10.0
+seasonality_name: monthly
+seasonality_period: 240
+fourier_order: 5
+regressor_1: RBOB_Gasoline_t_2
+regressor_2: US_Corn_t_1
+regressor_3: US_Cocoa_t_2
+
+
