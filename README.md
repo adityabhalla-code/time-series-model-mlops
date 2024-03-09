@@ -30,4 +30,13 @@ python -m build
 cd time_series_model_api
 uvicorn main:app
 ```
-## Step 5: 
+## Step 5: Build a docker image
+```python
+docker biuld . -t <user-name>/time-series-fastapi:latest
+```
+## Step 6: Push the docker image to docker registry
+```python
+docker login 
+docker push <user-name>/time-series-fastapi:latest
+```
+## step 7: Build git hub workflow for CI pipeline
