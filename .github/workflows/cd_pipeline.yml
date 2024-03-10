@@ -1,0 +1,25 @@
+name : CD pipeline
+
+# only trigger when the ci pipeline is completed
+
+on:
+  workflow_run:
+    workflows: ['CI pipeline']
+    types:
+      - completed
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name : Pull Docker Image
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_USER_NAME }}
+        run : sudo docker pull $DOCKER_USER/time-series-fastapi:latest
+      - name : Delete old Docker container
+        run : sudo docker rm -f time-series-fastapi-container || true
+      - name: Run Docker Container
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_USER_NAME }}
+        run : sudo docker run -d -p 8000:8000 --name time-series-fastapi-container $DOCKER_USER/time-series-fastapi
